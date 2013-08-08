@@ -50,7 +50,7 @@ public class SmtpClient extends BusModBase implements Handler<Message<JsonObject
     private SMTPDeliveryAgent agent = null;
     public void start() {
         super.start();
-         String address = getOptionalStringConfig("address", "vertx.smtpclient");
+        String address = getOptionalStringConfig("address", "vertx.smtpclient");
 
         EventLoop eventLoop = ((EventLoopContext)vertx.currentContext()).getEventLoop();
         SMTPClientTransport transport = NettySMTPClientTransportFactory.createNio(eventLoop).createPlain();
@@ -80,7 +80,7 @@ public class SmtpClient extends BusModBase implements Handler<Message<JsonObject
             default:
                 throw new IllegalArgumentException();
         }
-        int connectTimeout = json.getInteger("connectTimeout", 10);
+        int connectTimeout = json.getInteger("connection_timeout", 10);
         SMTPDeliveryAgentConfigImpl config = new SMTPDeliveryAgentConfigImpl();
         config.setHeloName(helo);
         config.setPipeliningMode(mode);
@@ -101,7 +101,7 @@ public class SmtpClient extends BusModBase implements Handler<Message<JsonObject
             public void operationComplete(SMTPClientFuture<Collection<FutureResult<Iterator<DeliveryRecipientStatus>>>> f) {
                 FutureResult<Iterator<DeliveryRecipientStatus>> result = f.getNoWait().iterator().next();
                 if (!result.isSuccess()) {
-                    sendError(message, "Error while deliver messages", result.getException());
+                    sendError(message, "Error while deliver messages: " + result.getException().getMessage(), result.getException());
                 } else {
                     JsonObject reply = new JsonObject();
                     reply.putString("sender", sender);

@@ -49,7 +49,7 @@ public class ModuleIntegrationTest extends TestVerticle {
     obj.putNumber("port", 1025);
     obj.putString("helo", "localhost");
     obj.putString("pipeling", "TRY");
-    obj.putNumber("connectTimeout", 5);
+    obj.putNumber("connection_timeout", 5);
     obj.putString("sender", "foo@bar.de");
     JsonArray rcpts = new JsonArray();
     rcpts.addString("valid1@valid.de");
