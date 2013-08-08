@@ -1,0 +1,17 @@
+{
+
+  // Java verticle
+  "main":"me.normanmaurer.vertx.mods.smtp.SmtpClient",
+
+
+  // If your module is going to be registered in the Vert.x module registry you will also need the following
+  // mandatory fields
+  "description":"Simple SMTP Client for Vert.x which not needs to run as worker",
+  "licenses": ["The Apache Software License Version 2.0"],
+  "author": "Norman Maurer",
+
+  // Optional fields
+  "developers": ["Norman Maurer"],
+  "keywords": ["smtp", "async", "client"],
+  "homepage": "https://github.com/normanmaurer/mod-smtp-client"
+}

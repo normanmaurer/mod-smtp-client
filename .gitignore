@@ -1,0 +1,13 @@
+*.class
+
+# Package Files #
+.project
+.classpath
+.settings
+*.iml
+*.ipr
+*.iws
+.idea/
+/target
+/reports
+.DS_Store
